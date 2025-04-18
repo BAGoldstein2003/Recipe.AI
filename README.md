@@ -26,7 +26,7 @@ Follow the instructions below on how to run this project.
 ### Run the Frontend:
 1. Install Node.js @ https://nodejs.org/en/download/
    
-2. In another terminal navigate into the 'frontend' directory using the following command in the terminal:
+2. In another terminal navigate into the 'frontend' directory using the following command:
 ```cd frontend```
 
 
