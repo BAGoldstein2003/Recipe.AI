@@ -17,7 +17,8 @@ Follow the instructions below on how to run this project.
 4. Navigate into the 'backend' directory using the following command in the terminal:
 ```cd backend```
 
-5. Then run the following command:
+5. Then run the following commands, consecutively:
+```pip install -r requirements.txt```
 ```flask run```
 
 ### Run the Frontend:
