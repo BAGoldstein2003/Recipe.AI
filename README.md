@@ -12,7 +12,7 @@ Follow the instructions below on how to run this project.
 
 2. Create an API key if you do not already possess one, and buy tokens.
 
-3. Save your API key into an environment variable using 'set OPENAI_API_KEY = "(your API key here)"' In the 'backend/makeRecipe.py' file, 
+3. Save your API key into an environment variable using 'set OPENAI_API_KEY = "(your API key here)"'
 
 4. Navigate into the 'backend' directory using the following command in the terminal:
 ```cd backend```
