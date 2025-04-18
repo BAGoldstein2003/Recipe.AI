@@ -1,0 +1,10 @@
+.welcome {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.app-desc {
+    display: flex;
+    justify-content: center;
+}
