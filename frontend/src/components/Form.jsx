@@ -27,14 +27,7 @@ export default function Form({ onFormSubmit }) {
             allergies: selectedAllergies
         }
         onFormSubmit(formData);
-        window.scrollTo({ top: 0, behavior: 'smooth'});
-        alert('Looking for ' + selectedAdjective + ' ' + 
-            selectedMealType +
-            ' recipes with no traces of ' + 
-            selectedAllergies.map(allergie => allergie + ',').join('')
-        )
-
-            
+        window.scrollTo({ top: 0, behavior: 'smooth'});        
     }
 
     const handleAdjectiveChange = (e) => {

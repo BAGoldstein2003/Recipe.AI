@@ -6,20 +6,13 @@
     padding: 20px;
     width: 100%;
     max-width: 100%;
-    align-content: center;
-    vertical-align: middle;
-    place-items: center;
 }
 
-.del-button {
-    color:aliceblue;
-    background-color: rgb(255, 0, 0);
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-}
 
 .recipe-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
     transition: all 0.3s ease; /* Smooth transition for hover effect */
     text-align: center;
@@ -29,10 +22,46 @@
     padding: 30px;
     border-radius: 50px;
     width: 75%;
+    position: relative;
+
     
+}
+
+.recipe-card.fav {
+    order: -1;
+}
+
+.del-button {
+    color:aliceblue;
+    background-color: rgb(255, 0, 0);
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    justify-self: flex-end;
+}
+
+.fav-heart.active{
+
+    transform: scale(1.2);
+    animation: pulse 0.3s ease;
+}
+
+.fav-heart {
+    align-self: center;
+    scale: 2;
+}
+.fav-heart:hover {
+    transform: scale(1.1);
+    opacity: 0.8
 }
 
 .recipe-card:hover {
     transform: translateY(-5px); /* Lift the card slightly */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1.2); }
 }

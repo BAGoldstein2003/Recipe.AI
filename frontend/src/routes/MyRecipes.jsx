@@ -1,9 +1,11 @@
 import './MyRecipes.css'
 import { useState,useEffect } from 'react'
+import { FiHeart } from "react-icons/fi";
 
-export default function MyRecipes({ recipes, setRecipes}) {
+export default function MyRecipes({ recipes, setRecipes, favorites, setFavorites}) {
     const [localRecipes, setLocalRecipes] = useState(recipes)
 
+    
     useEffect(() => {
         setLocalRecipes(recipes)
         console.log('MyRecipes received updated recipes:', recipes);
@@ -16,11 +18,26 @@ export default function MyRecipes({ recipes, setRecipes}) {
         setLocalRecipes(updatedRecipes)
     }
 
+    const handleFavorite = (index) => {
+        setFavorites(prev => {
+            const newFavorites = prev.includes(index) 
+                ? prev.filter(i => i !== index)
+                : [...prev, index];
+            return newFavorites;
+        })
+    }
+
     return (
         <div className="recipes-container"> 
             {recipes.map((recipe, index) => (
                 <div key={index} 
-                className="recipe-card">
+                    className={`recipe-card ${favorites.includes(index) ? 'fav' : ''}`}>
+                    <FiHeart 
+                        className={`fav-heart ${favorites.includes(index) ? 'active' : ''}`} 
+                        onClick={() => handleFavorite(index)}
+                        fill={favorites.includes(index) ? 'red' : 'none'}
+                        stroke='white'>
+                    </FiHeart>
                     <h2>{recipe.title}</h2>
                     <h3>Ingredients</h3>
                     <ul>
