@@ -14,10 +14,10 @@ function App() {
     return savedRecipes ? JSON.parse(savedRecipes) : []
   });
   const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem('favorites');
-    if (saved) {
+    const localRecipes = localStorage.getItem('favorites');
+    if (localRecipes) {
         try {
-            return JSON.parse(saved);
+            return JSON.parse(localRecipes);
         } catch {
             return [];
         }
@@ -25,18 +25,27 @@ function App() {
     return [];
   });
 
+    //handle refreshes
+    useEffect(() => {
+      window.addEventListener('load', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }, []);
+
+
+  //useEffects HERE
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites))
   }, [favorites]);
   
 
-
-
-  
   //add to local storage every time recipes changes
   useEffect(() => {
     localStorage.setItem('recipes', JSON.stringify(recipes));
-  }, [recipes])
+  }, [recipes]);
   
 
   const handleFormSubmit = async (formData) => {
@@ -70,6 +79,7 @@ function App() {
    } catch (error) {
     console.error('Error:', error);
   } finally {
+
     setIsLoadingRecipe(false);
   }
     

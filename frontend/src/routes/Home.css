@@ -8,3 +8,6 @@
     display: flex;
     justify-content: center;
 }
+.home-wrapper {
+    margin-top: 120px;
+}

@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, } from 'react';
 import './Form.css';
 import foodData from '../data/foodData.json';
 
 export default function Form({ onFormSubmit }) {
-    const [selectedAdjective, setSelectedAdjective] = useState('')
-    const [selectedMealType, setSelectedMealType] = useState('')
-    const [selectedAllergies, setSelectedAllergies] = useState([])
+    const [selectedAdjective, setSelectedAdjective] = useState('');
+    const [selectedMealType, setSelectedMealType] = useState('');
+    const [selectedAllergies, setSelectedAllergies] = useState([]);
+    const [request, setRequest] = useState("");
 
     const foodAdjectives = foodData.food_adjectives
     const allergies = foodData.food_allergies
@@ -24,7 +25,8 @@ export default function Form({ onFormSubmit }) {
         const formData = {
             mealType: selectedMealType,
             adjective: selectedAdjective,
-            allergies: selectedAllergies
+            allergies: selectedAllergies,
+            specialRequest: request
         }
         onFormSubmit(formData);
         window.scrollTo({ top: 0, behavior: 'smooth'});        
@@ -48,10 +50,14 @@ export default function Form({ onFormSubmit }) {
         }
     }
 
+    const handleTextInputChange = (e) => {
+        setRequest(e.target.value);
+    }
+
 
     return (
         <form className="recipe-form" onSubmit={handleSubmit}>
-            <label className="form-label" htmlFor="adjective">Describe Your Dish</label>
+            <label className="form-label" htmlFor="adjective">Describe Your Dish:</label>
             <select
                 name="adjective"
                 value={selectedAdjective}
@@ -65,7 +71,7 @@ export default function Form({ onFormSubmit }) {
                 }
             </select>
 
-            <label className='form-label' htmlFor="mealType">Time of Day</label>
+            <label className='form-label' htmlFor="mealType">Time of Day:</label>
             <select
                 name="mealType"
                 value={selectedMealType}
@@ -80,7 +86,7 @@ export default function Form({ onFormSubmit }) {
             </select>
 
             <div className="allergies-container">
-                <label className='form-label'>Select Allergies</label>
+                <label className='form-label'>Select Allergies:</label>
                 <div className="allergies-grid">
                 {
                     allergies.sort().map((allergy, idx) => (
@@ -95,6 +101,18 @@ export default function Form({ onFormSubmit }) {
                     ))
                 }
                 </div>
+                
+            <div className="special-request"
+            >
+                <label className="form-label">Enter any special requests:</label>
+                <input className="text-input"
+                type='text'
+                onChange={handleTextInputChange}
+                >
+                </input>
+
+            </div>
+                  
             </div>
         
             <button type="submit" className="form-submit">Generate Recipe!</button>

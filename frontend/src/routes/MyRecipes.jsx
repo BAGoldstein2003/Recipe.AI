@@ -19,19 +19,21 @@ export default function MyRecipes({ recipes, setRecipes, favorites, setFavorites
     }
 
     const handleFavorite = (index) => {
-        setFavorites(prev => {
-            const newFavorites = prev.includes(index) 
-                ? prev.filter(i => i !== index)
-                : [...prev, index];
+        setFavorites(prevFavs => {
+            const newFavorites = prevFavs.includes(index) 
+                ? prevFavs.filter(i => i !== index)
+                : [...prevFavs, index];
             return newFavorites;
         })
     }
 
-    return (
+    return ( 
         <div className="recipes-container"> 
             {recipes.map((recipe, index) => (
                 <div key={index} 
-                    className={`recipe-card ${favorites.includes(index) ? 'fav' : ''}`}>
+                    className={`recipe-card fade-in ${favorites.includes(index) ? 'fav' : ''}`}
+                    style ={{ animationDelay: `${index * 0.2}s`}}
+                    >
                     <FiHeart 
                         className={`fav-heart ${favorites.includes(index) ? 'active' : ''}`} 
                         onClick={() => handleFavorite(index)}

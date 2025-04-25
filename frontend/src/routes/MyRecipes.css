@@ -1,5 +1,11 @@
+.wrapper-container {
+    display: flex;
+    flex-direction: row;
+}
+
 .recipes-container {
-    
+    margin-top: 80px;
+    padding-top: 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -7,7 +13,6 @@
     width: 100%;
     max-width: 100%;
 }
-
 
 .recipe-card {
     display: flex;
@@ -23,8 +28,17 @@
     border-radius: 50px;
     width: 75%;
     position: relative;
-
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
     
+}
+
+.recipe-card:nth-child(2n) {
+    background-color: rgb(139, 87, 19); /* Darker brown */
+}
+
+.recipe-card:nth-child(2n+1) {
+    background-color: rgb(172, 107, 23); /* Your current brown */
 }
 
 .recipe-card.fav {
@@ -64,4 +78,31 @@
     0% { transform: scale(1); }
     50% { transform: scale(1.3); }
     100% { transform: scale(1.2); }
+}
+
+h3 {
+    color:darkred;
+}
+
+.fav-title {
+    border-bottom: 2px solid grey
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+    
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
