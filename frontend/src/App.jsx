@@ -52,7 +52,7 @@ function App() {
     try {
     setIsLoadingRecipe(true);
     console.log('form submitted:', formData);
-    const response = await fetch('http://localhost:5000/submit', {
+    const response = await fetch('https://recipe-ai-server.onrender.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', 
