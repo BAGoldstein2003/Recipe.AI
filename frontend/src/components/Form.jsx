@@ -79,7 +79,7 @@ export default function Form({ onFormSubmit }) {
                 className="form-selectbox">
                 <option value="" disabled>Select a Meal Type</option>
                 {
-                    mealTypes.sort().map((meal, idx) => (
+                    mealTypes.map((meal, idx) => (
                         <option key={idx} value={meal}>{meal}</option>
                     ))
                 }
